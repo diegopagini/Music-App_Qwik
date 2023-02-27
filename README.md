@@ -1,3 +1,5 @@
+<!-- @format -->
+
 # Qwik City App ⚡️
 
 - [Qwik Docs](https://qwik.builder.io/)
@@ -64,3 +66,50 @@ The production build will generate client and server modules by running both cli
 npm run build # or `yarn build`
 ```
 
+---
+
+## Components$
+
+### root.tsx
+
+```tsx
+export const MyComponent = () => {
+	// Traditional component, like in React.
+	return <>Traditional component</>;
+};
+
+export const MagicComponent = component$(() => {
+	// Qwik component, like in Next.
+	return <>Qwik Component</>;
+});
+
+export default component$(() => {
+	useStyles$(globalStyles); // To use styles globally.
+	useStylesScoped$(globalStyles); // To use styles only in this component.
+
+	return (
+		<QwikCityProvider>
+			{/* head and body are required */}
+			<head>
+				<meta charSet='utf-8' />
+				<link rel='manifest' href='/manifest.json' />
+				<RouterHead />
+			</head>
+			<body lang='en'>
+				{/* RouterOutlet is needed for the router */}
+				<RouterOutlet />
+				<ServiceWorkerRegister />
+			</body>
+		</QwikCityProvider>
+	);
+});
+```
+
+### layout.tsx
+
+```tsx
+export default component$(() => {
+	// layout is like the main component, or index, where the app is mounted.
+	return <Slot />;
+});
+```
