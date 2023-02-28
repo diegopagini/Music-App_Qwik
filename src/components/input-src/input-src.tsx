@@ -1,7 +1,7 @@
 /** @format */
 import { $, component$, QwikMouseEvent, useSignal } from '@builder.io/qwik';
 
-import { InputList } from '../input-list/input-list';
+import { InputList } from './input-list';
 
 export const InputSrc = component$(() => {
 	/**
